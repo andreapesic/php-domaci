@@ -1,7 +1,6 @@
 <?php
 
-require './Broker.php';
-$broker=Broker::getBroker();
+
 
 class Termin {
     
@@ -11,7 +10,7 @@ class Termin {
     public $datum;   
     public $prostorija;
     
-    public function __construct($id=null, $usluga=null, $klijent=null, $prostorija=null, $datum=null)
+    public function __construct($id=null, $usluga=null, $klijent=null, $datum=null,  $prostorija=null)
     {
         $this->id = $id;
         $this->usluga = $usluga;
@@ -21,35 +20,35 @@ class Termin {
     }
 
 
-    public static function getAll(mysqli $conn)
+    public static function getAll(Broker $broker)
     {
         $query = "SELECT * FROM termin";
         return $broker->executeQuery($query);
     }
 
-    public static function getById($id){
+    public static function getById($id,Broker $broker){
         $query = "SELECT * FROM termin WHERE id=$id";
         return $broker->executeQuery($query);
     }
 
-    public static function getAllByUsluga($id){
+    public static function getAllByUsluga($id,Broker $broker){
         $query = "SELECT * FROM termin WHERE usluga=$id";
         return $broker->executeQuery($query);
     }
 
-    public function deleteById()
+    public function deleteById(Broker $broker)
     {
         $query = "DELETE FROM termin WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
 
-    public function update(Tremin $termin)
+    public function update(Termin $termin, Broker $broker)
     {
         $query = "UPDATE termin set usluga = $termin->usluga,klijent = $termin->klijent,datum = $termin->datum,prostorija = $termin->prostorija WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
 
-    public static function add(Tremin $termin)
+    public static function add(Termin $termin, Broker $broker)
     {
         $query = "INSERT INTO termin(usluga, klijent, datum, prostorija) VALUES('$termin->usluga','$termin->klijent','$termin->datum','$termin->prostorija')";
         return $broker->executeQuery($query);

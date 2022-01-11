@@ -1,8 +1,5 @@
 <?php
 
-require './Broker.php';
-$broker=Broker::getBroker();
-
 class Usluga {
     
     public $id;   
@@ -17,32 +14,32 @@ class Usluga {
      
     }
 
-    public static function getAll()
+    public static function getAll(Broker $broker)
     {
         $query = "SELECT * FROM usluga";
         return $broker->executeQuery($query);
     }
 
-    public static function getById($id){
+    public static function getById($id,Broker $broker){
         $query = "SELECT * FROM usluga WHERE id=$id";
         return $broker->executeQuery($query);
 
     }
 
-    public function deleteById()
+    public function deleteById(Broker $broker)
     {
         $query = "DELETE FROM usluga WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
 
     # ili da zovemo nad objektom koji menjamo a prosledjujemo id
-    public function update(Usluga $usluga)
+    public function update(Usluga $usluga,Broker $broker)
     {
         $query = "UPDATE usluga set naziv = $usluga->naziv,pruzalac = $usluga->pruzalac WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
   
-    public static function add(Usluga $usluga)
+    public static function add(Usluga $usluga,Broker $broker)
     {
         $query = "INSERT INTO usluga(naziv, pruzalac) VALUES('$usluga->naziv','$usluga->pruzalac')";
         return $broker->executeQuery($query);

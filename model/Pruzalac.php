@@ -1,8 +1,5 @@
 <?php
 
-require './Broker.php';
-$broker=Broker::getBroker();
-
 class Pruzalac{
     
     public $id;   
@@ -15,13 +12,13 @@ class Pruzalac{
        
     }
 
-    public static function getAll()
+    public static function getAll(Broker $broker)
     {
         $query = "SELECT * FROM pruzalac";
         return $broker->executeQuery($query);
     }
 
-    public static function getById($id)
+    public static function getById($id,Broker $broker)
     {
         $query = "SELECT * FROM pruzalac WHERE id=$id";
         return $broker->executeQuery($query);
