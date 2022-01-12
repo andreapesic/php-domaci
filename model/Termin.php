@@ -44,7 +44,7 @@ class Termin {
 
     public function update(Termin $termin, Broker $broker)
     {
-        $query = "UPDATE termin set usluga = $termin->usluga,klijent = $termin->klijent,datum = $termin->datum,prostorija = $termin->prostorija WHERE id=$this->id";
+        $query = "UPDATE termin set usluga = $termin->usluga,klijent = '$termin->klijent',datum = '$termin->datum',prostorija = $termin->prostorija WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
 

@@ -16,7 +16,8 @@ class Usluga {
 
     public static function getAll(Broker $broker)
     {
-        $query = "SELECT * FROM usluga";
+        $query = "SELECT u.*, p.imePrezime as pruzalac_imePrezime, count(t.id) as broj_termina FROM usluga u 
+        INNER JOIN pruzalac p on (u.pruzalac=p.id) LEFT JOIN termin t on (u.id=t.usluga) GROUP BY u.id ORDER BY u.id";
         return $broker->executeQuery($query);
     }
 
@@ -35,7 +36,7 @@ class Usluga {
     # ili da zovemo nad objektom koji menjamo a prosledjujemo id
     public function update(Usluga $usluga,Broker $broker)
     {
-        $query = "UPDATE usluga set naziv = $usluga->naziv,pruzalac = $usluga->pruzalac WHERE id=$this->id";
+        $query = "UPDATE usluga set naziv = '$usluga->naziv',pruzalac = $usluga->pruzalac WHERE id=$this->id";
         return $broker->executeQuery($query);
     }
   
