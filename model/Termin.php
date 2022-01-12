@@ -22,7 +22,7 @@ class Termin {
 
     public static function getAll(Broker $broker)
     {
-        $query = "SELECT * FROM termin";
+        $query = "SELECT t.*, u.naziv as usluga_naziv FROM termin t INNER JOIN usluga u on (t.usluga=u.id)";
         return $broker->executeQuery($query);
     }
 

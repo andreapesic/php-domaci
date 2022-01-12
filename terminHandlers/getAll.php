@@ -20,5 +20,4 @@ $broker=Broker::getBroker();
 }
     echo json_encode($response);
 
-
 ?>
