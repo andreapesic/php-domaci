@@ -8,9 +8,9 @@ $broker=Broker::getBroker();
 if(isset($_POST['usluga']) && isset($_POST['klijent']) 
 && isset($_POST['datum']) && isset($_POST['prostorija']) && isset($_POST['id'])) {
 
-    $terminKojiSeMenja = new Termin($_POST['id'], null, null, null, null);
+    $terminKojiSeMenja = new Termin($_POST['id']);
     $terminKojimSeMenja = new Termin(null,$_POST['usluga'],$_POST['klijent'],$_POST['datum'],$_POST['prostorija']);
-    $rezultat = $terminKojiSeMenja::update($terminKojimSeMenja, $broker);
+    $rezultat = $terminKojiSeMenja->update($terminKojimSeMenja, $broker);
 
     if(!$rezultat){
         echo $broker->getMysqli()->error;

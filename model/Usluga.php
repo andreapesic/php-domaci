@@ -11,7 +11,6 @@ class Usluga {
         $this->id = $id;
         $this->naziv = $naziv;
         $this->pruzalac = $pruzalac;
-     
     }
 
     public static function getAll(Broker $broker)
