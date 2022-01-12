@@ -6,7 +6,7 @@ require "../model/Usluga.php";
 $broker=Broker::getBroker();
 
 if(isset($_POST['id'])){
-    $usliga = new Usluga($_POST['id']);
+    $usluga = new Usluga($_POST['id']);
     $rezultat = $usluga->deleteById($broker);
     if(!$rezultat){
         echo $broker->getMysqli()->error;

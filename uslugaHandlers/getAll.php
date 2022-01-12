@@ -5,7 +5,7 @@ require '../Broker.php';
 
 $broker=Broker::getBroker();
 
-    $resultSet = Usluga::getById($broker);
+    $resultSet = Usluga::getAll($broker);
     $response=[];
 
     if(!$resultSet){

@@ -5,7 +5,7 @@ require '../Broker.php';
 
 $broker=Broker::getBroker();
 
-    $resultSet = Termin::getById($broker);
+    $resultSet = Termin::getAll($broker);
     $response=[];
 
     if(!$resultSet){

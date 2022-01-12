@@ -5,7 +5,7 @@ require '../Broker.php';
 
 $broker=Broker::getBroker();
 
-    $resultSet = Pruzalac::getById($broker);
+    $resultSet = Pruzalac::getAll($broker);
     $response=[];
 
     if(!$resultSet){

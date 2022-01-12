@@ -6,6 +6,7 @@ require "../model/Usluga.php";
 $broker=Broker::getBroker();
 
 if(isset($_POST['naziv']) && isset($_POST['pruzalac'])) {
+    
     $usluga = new Usluga(null,$_POST['naziv'],$_POST['pruzalac']);
     $rezultat = Usluga::add($usluga, $broker);
 
