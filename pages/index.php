@@ -138,7 +138,7 @@
       </div>
 
       <div class="button_div1">
-        <button data-toggle="modal" data-target="#exampleModal" type="button"
+        <button data-toggle="modal" data-target="#exampleModal" type="button" data-backdrop="static"
           class="btn btn-secondary btn-lg btn-block">NOVA USLUGA</button>
       </div>
 
@@ -170,6 +170,10 @@
           return;
         }
         const naziv = $('#naziv_usluge').val();
+        if(naziv === "") {
+            alert("Morate uneti naziv usluge!");
+            return false;
+        }
         const pruzalac = $('#pruzalac').val();
         $.post('../uslugaHandlers/update.php', { id: trenutniId, naziv: naziv, pruzalac: pruzalac }, function (data) {
           console.log(data);
@@ -206,15 +210,21 @@
       // Dugme za dodavanje
       $('#button_dodaj').click(function (e) {
         const naziv = $('#naziv_usluge_dodaj').val();
-        const pruzalac = $('#pruzalac_dodaj').val();
-        $.post('../uslugaHandlers/add.php', { naziv: naziv, pruzalac: pruzalac }, function (data) {
-          console.log(data);
-          if (data != 1) {
+        if(naziv === "") {
+            alert("Morate uneti naziv usluge!");
+            return false;
+        }
+        else {
+            const pruzalac = $('#pruzalac_dodaj').val();
+            $.post('../uslugaHandlers/add.php', { naziv: naziv, pruzalac: pruzalac }, function (data) {
+            console.log(data);
+            if (data != 1) {
             alert(data);
             return;
           }
           ucitajUsluge();
         })
+        }
       })
 
       // Modal za dodavanje
@@ -283,7 +293,7 @@
       let index = 1;
       for (let usluga of usluge) {
         $('#usluge').append(`
-          <tr data-toggle="modal" data-target="#exampleModal2" data-id=${usluga.id}  >
+          <tr data-toggle="modal" data-target="#exampleModal2" data-backdrop="static" data-id=${usluga.id}  >
               <th scope="row">${index++}</th>
               <td>${usluga.naziv}</td>
               <td>${usluga.pruzalac_imePrezime}</td>
