@@ -1,6 +1,7 @@
 <div class='navbar_div'>
-    <nav class="navbar navbar-dark bg-dark sticky-top bottom_sep">
-    <a class="navbar-brand a_header" href="#">Meni</a>
+  <nav class="navbar navbar-light sticky-top bottom_sep" style="background-color: #f3c9bc;">
+    <img src="../img/logo.jpg" class="logo-pic"/>
+    <a class="navbar-brand a_header" href="#"><p class="text-white">Meni</p></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,6 +15,6 @@
         </li>
         </ul>
     </div>
-    
-    </nav>
+  </nav>
 </div>
+

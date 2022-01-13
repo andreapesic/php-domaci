@@ -49,15 +49,15 @@
               </div>
             </fieldset>
             <div class="d-grid gap-2">
-              <a href='./terminiZaUslugu.php' id='sviTermini'><button class="btn btn-warning" type="button">Svi termini</button></a>
+              <a href='./terminiZaUslugu.php' id='sviTermini'><button class="btn btn-warning" style="background-color: #f3c9bc ;" type="button">Svi termini</button></a>
             </div>
           </form>
 
         </div>
         <div class="modal-footer align_center">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="button_sacuvaj">Sacuvaj</button>
-          <button type='button' class="btn btn-danger" data-dismiss="modal" id="button_delete">Obrisi</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #b6c059;">Zatvori</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="button_sacuvaj" style="background-color: #7d8f01;">Sacuvaj</button>
+          <button type='button' class="btn btn-danger" data-dismiss="modal" id="button_delete" style="background-color: #404902;">Obrisi</button>
         </div>
       </div>
     </div>
@@ -97,8 +97,8 @@
 
         </div>
         <div class="modal-footer align_center">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="button_dodaj">Dodaj</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #b6c059;">Zatvori</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="button_dodaj" style="background-color: #7d8f01;">Dodaj</button>
         </div>
       </div>
     </div>
@@ -106,23 +106,17 @@
 
 
   <?php include 'header.php'; ?>
+
   <div class='centerDiv'>
-
     <div class='left_div grid-item'>
-
     </div>
-
     <div class='middle_div grid-item'>
-
       <div class='h_div'>
         <h1 class='h1_text'>Usluge</h1>
-        <br>
-        <hr>
       </div>
-
       <div class='table_div table-hover'>
         <table class="table">
-          <thead class="thead-dark">
+          <thead class="thead-red" style="background-color: #f3c9bc;">
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Usluga</th>
@@ -136,7 +130,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="button_div1">
         <button data-toggle="modal" data-target="#exampleModal" type="button" data-backdrop="static"
           class="btn btn-secondary btn-lg btn-block">NOVA USLUGA</button>

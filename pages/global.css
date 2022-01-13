@@ -7,9 +7,19 @@
   font-size: 30px !important;
 }
 
+.logo-pic {
+  height: 60px;
+  width: 60px;
+}
+
+.text-white {
+  margin-left: -650px;
+  margin-top: 7px;
+}
+
 .centerDiv {
-  width: 100vw !important;
-  height: 100vh !important;
+  width: 99vw !important;
+  height: 110vh !important;
   border: 1px solid black;
   background-image: url("../img/background.jpg");
   background-size: cover;
@@ -22,6 +32,7 @@
 .navbar_div {
   width: 100% !important;
   height: auto !important;
+  border-bottom: none;
 }
 
 .wallpaper_div {
@@ -58,6 +69,7 @@
 }
 
 .h1_text {
+  margin-top: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -98,4 +110,19 @@
 .right_div {
   grid-column-start: 3;
   grid-column-end: 4;
+}
+
+input {
+  height: 40px;
+  width: 220px;
+}
+
+.row {
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.col-3 {
+  margin: 20px;
+  justify-content: center;
 }

@@ -53,7 +53,7 @@
 
       <div class='table_div'>
         <table class="table">
-          <thead class="thead-dark">
+          <thead class="thead-red" style="background-color: #f3c9bc ;">
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Usluga</th>
