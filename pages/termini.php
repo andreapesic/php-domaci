@@ -30,7 +30,6 @@
 
       <div class='h_div'>
         <h1 class='h1_text'>Termini usluga</h1>
-
         <br>
         <hr>
       </div>
@@ -42,7 +41,16 @@
             <option value="desc">Najudaljenije</option>
           </select>
         </div>
+        <div class="col-3">
+        <label>Pretrazi po datumu</label>
+          <input type="text" id="datum" onkeyup="funkcijaZaPretragu1()" placeholder="Pretrazi termine">
+        </div>
+        <div class="col-3">
+        <label>Pretrazi po prostoriji</label>
+          <input type="text" id="prostorija" onkeyup="funkcijaZaPretragu2()" placeholder="Pretrazi termine">
+        </div>
       </div>
+
       <div class='table_div'>
         <table class="table">
           <thead class="thead-dark">
@@ -59,17 +67,13 @@
           </tbody>
         </table>
       </div>
-
-
-
     </div>
-
-
-
   </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
     let termini = [];
+    let terminiFiltrirano = [];
 
     $(document).ready(function () {
 
@@ -85,7 +89,8 @@
           return a.datum.localeCompare(b.datum);
 
         })
-        napuniTabelu();
+        
+        napuniTabelu(termini);
       });
 
       $('#sortiraj').change(function () {
@@ -102,15 +107,37 @@
           })
         }
 
-        napuniTabelu();
+        napuniTabelu(termini);
       })
     })
 
+    function funkcijaZaPretragu1() {
+      input = document.getElementById("datum");
+      filter = input.value;
+      terminiFiltrirano = termini;
 
-    function napuniTabelu() {
+      if(filter != "") {
+        terminiFiltrirano = termini.filter((element) => element.datum == filter);
+      }
+      napuniTabelu(terminiFiltrirano);
+    }
+
+    function funkcijaZaPretragu2() {
+      input = document.getElementById("prostorija");
+      filter = input.value;
+      terminiFiltrirano = termini;
+
+      if(filter != "") {
+        terminiFiltrirano = termini.filter((element) => element.prostorija == filter);
+      }
+      napuniTabelu(terminiFiltrirano);
+    }
+
+
+    function napuniTabelu(niz) {
       $('#termini').html('');
       let i = 0;
-      for (let termin of termini) {
+      for (let termin of niz) {
         $('#termini').append(`
             <tr>
               <td>${++i}</td>
