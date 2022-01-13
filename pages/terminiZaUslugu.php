@@ -94,7 +94,7 @@
       </div>
 
       <div class="button_div1">
-        <button data-toggle="modal" data-target="#exampleModal" data-id='-1' type="button"
+        <button data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-id='-1' type="button"
           class="btn btn-secondary btn-lg btn-block">NOVI TERMIN</button>
       </div>
 
@@ -124,6 +124,10 @@
         const klijent = $('#klijent').val();
         const datum = $('#datum').val();
         const prostorija = $('#prostorija').val();
+        if(klijent == "" || datum == "" || prostorija == "") {
+          alert("Morate popuniti sva polja!");
+          return false;
+        }
         if (trenutniTerminId == -1) {
           $.post('../terminHandlers/add.php', { klijent: klijent, datum: datum, prostorija: prostorija, usluga: usluga.id }, function (data) {
             vratiTermine();
@@ -189,6 +193,10 @@
           return;
         }
         termini = data.termini;
+        termini.sort(function (a, b) {
+          return a.datum.localeCompare(b.datum);
+
+        })
         napuniTabelu();
       })
     }
@@ -198,7 +206,7 @@
       let i = 0;
       for (let termin of termini) {
         $('#termini').append(`
-            <tr data-toggle='modal' data-target='#exampleModal' data-id=${termin.id} >
+            <tr data-toggle='modal' data-target='#exampleModal' data-backdrop="static" data-id=${termin.id} >
               <td>${++i}</td>
               <td>${termin.klijent}</td>
               <td>${termin.datum}</td>
