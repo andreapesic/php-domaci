@@ -102,7 +102,6 @@
           })
         } else {
           termini.sort(function (a, b) {
-            console.log(b.marka_naziv);
             return b.datum.localeCompare(a.datum);
           })
         }
