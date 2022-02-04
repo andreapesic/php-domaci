@@ -167,6 +167,11 @@
             alert("Morate uneti naziv usluge!");
             return false;
         }
+        if(!/^([^0-9]*)$/.test(naziv)) {
+            alert("Naziv usluge ne sme sadrzati cifre i specijalne karaktere!");
+            return false;
+        }
+        
         const pruzalac = $('#pruzalac').val();
         $.post('../uslugaHandlers/update.php', { id: trenutniId, naziv: naziv, pruzalac: pruzalac }, function (data) {
           console.log(data);
@@ -186,7 +191,7 @@
         }
         $.post('../uslugaHandlers/delete.php', { id: trenutniId }, function (data) {
           if (data != 1) {
-            alert(data);
+            alert("Ne mozete obrisati uslugu koja ima zakazane termine!");
             return;
           }
           console.log({ trenutniId: trenutniId });
@@ -205,6 +210,14 @@
         const naziv = $('#naziv_usluge_dodaj').val();
         if(naziv === "") {
             alert("Morate uneti naziv usluge!");
+            return false;
+        }
+        if(!/^([^0-9]*)$/.test(naziv)) {
+            alert("Naziv usluge ne sme sadrzati cifre i specijalne karaktere!");
+            return false;
+        }
+        if(usluge.find(x=>x.naziv.toUpperCase()==naziv.toUpperCase())){
+            alert("Usluga sa datim nazivom vec postoji!");
             return false;
         }
         else {
@@ -231,6 +244,7 @@
       })
 
       // Modal za izmenu
+      
       $('#exampleModal2').on('show.bs.modal', function (e) {
         const button = $(e.relatedTarget);
         const id = button.data('id');
