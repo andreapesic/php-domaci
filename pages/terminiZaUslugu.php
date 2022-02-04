@@ -126,6 +126,19 @@
           alert("Morate popuniti sva polja!");
           return false;
         }
+        if(!/^([^0-9]*)$/.test(klijent)) {
+            alert("Ime i prezime ne sme sadrzati cifre i specijalne karaktere!");
+            return false;
+        }
+        if(!/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/.test(datum)) {
+            alert("Datum mora biti u formatu  YYYY-MM-DD!");
+            return false;
+        }
+        if(!/^[0-9]*$/.test(prostorija)) {
+            alert("Broj prostorije moze sadrzati samo cifre!");
+            return false;
+        }
+
         if (trenutniTerminId == -1) {
           $.post('../terminHandlers/add.php', { klijent: klijent, datum: datum, prostorija: prostorija, usluga: usluga.id }, function (data) {
             vratiTermine();
@@ -152,6 +165,7 @@
       $("#exampleModal").on('show.bs.modal', function (e) {
         const tr = $(e.relatedTarget);
         trenutniTerminId = tr.data('id');
+        console.log(trenutniTerminId);
         if (trenutniTerminId == -1) {
           $('#naslovModala').html('Dodavanje novog termina');
           $('#button_delete').attr('hidden', true);
